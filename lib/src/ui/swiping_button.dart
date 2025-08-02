@@ -151,6 +151,9 @@ class _SwipingButtonState extends State<SwipingButton> with TickerProviderStateM
             top: widget.reverseVertical ? null : _verticalOffset,
             bottom: widget.reverseVertical ? _verticalOffset : null,
             child: GestureDetector(
+             onHorizontalDragDown:  widget.showMainButton
+                  ? (_) => setState(() => _showSwipeButtonBodyOne = false)
+                  : null,
               onTapDown:
                   widget.showMainButton
                       ? (_) => setState(() => _showSwipeButtonBodyOne = false)
@@ -223,18 +226,16 @@ class _SwipingButtonState extends State<SwipingButton> with TickerProviderStateM
                 switchInCurve: Curves.easeIn,
                 switchOutCurve: Curves.easeOut,
                 transitionBuilder: (Widget child, Animation<double> animation) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  );
+                  return FadeTransition(opacity: animation, child: child);
                 },
-                child: widget.showMainButton
-                    ? SizedBox(key: const ValueKey('bodyOne'), child: widget.mainButton)
-                    : SizedBox(
-                  key: const ValueKey('bodyTwo'),
-                  child: widget.secondaryButton ?? const SizedBox.shrink(),
-                ),
-              )
+                child:
+                    widget.showMainButton
+                        ? SizedBox(key: const ValueKey('bodyOne'), child: widget.mainButton)
+                        : SizedBox(
+                          key: const ValueKey('bodyTwo'),
+                          child: widget.secondaryButton ?? const SizedBox.shrink(),
+                        ),
+              ),
             ),
           ),
         ],
