@@ -75,7 +75,7 @@ class SwipingButton extends StatefulWidget {
   final SwipeBodyWidgets? swipeButtonBodyTwo;
 
   final GestureTapDownCallback? onTapDown;
-  final GestureTapUpCallback? onTapUp;
+  final VoidCallback? onTapUp;
 
   /// Padding around the widget.
   final EdgeInsets? padding;
@@ -236,10 +236,10 @@ class _SwipingButtonState extends State<SwipingButton>
               onTapUp:
                   widget.showMainButton
                       ? (details) {
-                        if (widget.showSwipeButtonBodyOne == null) {
-                          setState(() => _showSwipeButtonBodyOne = true);
-                        }
-                        widget.onTapUp?.call(details);
+                        // if (widget.showSwipeButtonBodyOne == null) {
+                        //   setState(() => _showSwipeButtonBodyOne = true);
+                        // }
+                        // widget.onTapUp?.call();
                       }
                       : null,
 
@@ -287,6 +287,15 @@ class _SwipingButtonState extends State<SwipingButton>
                         } else {
                           setState(() {});
                         }
+                      }
+                      : null,
+              onHorizontalDragCancel:
+                  widget.showMainButton
+                      ? () {
+                        if (widget.showSwipeButtonBodyOne == null) {
+                          setState(() => _showSwipeButtonBodyOne = true);
+                        }
+                        widget.onTapUp?.call();
                       }
                       : null,
 

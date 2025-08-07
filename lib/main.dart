@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -27,7 +29,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   double horizontal = 0.0;
 
   double vertical = 0.0;
@@ -53,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[const Text('You have pushed the button this many times:')],
+          children: <Widget>[
+            const Text('You have pushed the button this many times:'),
+          ],
         ),
       ),
       bottomNavigationBar: Container(
@@ -80,12 +85,17 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               animationController.reset();
             },
             onVerticalDragCallback: () {},
-
             swipeButtonBodyTwo: SwipeBodyWidgets(
               body: Text('slide to cancel'),
-              leading: Row(children: [Icon(Icons.mic), const SizedBox(width: 4), Text('00:30')]),
+              leading: Row(
+                children: [
+                  Icon(Icons.mic),
+                  const SizedBox(width: 4),
+                  Text('00:30'),
+                ],
+              ),
             ),
-              swipeButtonBodyOne: SwipeBodyWidgets(body: TextField()),
+            swipeButtonBodyOne: SwipeBodyWidgets(body: TextField()),
           ),
         ),
       ),
