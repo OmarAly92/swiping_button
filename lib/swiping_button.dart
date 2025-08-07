@@ -1,5 +1,6 @@
-
 library swiping_button_ego;
+
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 

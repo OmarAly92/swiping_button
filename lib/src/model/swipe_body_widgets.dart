@@ -1,5 +1,7 @@
 part of '../../swiping_button.dart';
 
+/// Internal widget to switch between two swipe body layouts with animation.
+
 class SwipeBodyWidgets {
   final Widget? leading;
   final Widget? body;
